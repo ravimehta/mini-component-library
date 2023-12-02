@@ -54,12 +54,12 @@ const InputField = styled.input`
 
 const IconWrapper = styled.div`
   position: absolute;
-  top: 50%;
+  top: 0;
+  bottom: 0;
   left: 0;
-  transform: translateY(-50%);
-  margin: auto;
+  margin: auto 0;
   width: var(--iconSize);
-  height: 100%;
+  height: var(--iconSize);
   pointer-events: none;
 `;
 
@@ -74,7 +74,7 @@ const IconInputWrapper = styled.div`
   }
 `;
 
-const IconInput = ({ label, icon, width = 250, size, placeholder }) => {
+const IconInput = ({ label, icon, width = 250, size, ...delegated }) => {
   const styles = SIZE_STYLES[size];
 
   return (
@@ -84,7 +84,7 @@ const IconInput = ({ label, icon, width = 250, size, placeholder }) => {
         "--height": styles.height + "px",
       }}
     >
-      <IconWrapper style={{ "--iconSize": styles.iconSize }}>
+      <IconWrapper style={{ "--iconSize": styles.iconSize + "px" }}>
         <Icon
           id={icon}
           size={styles.iconSize}
@@ -93,12 +93,12 @@ const IconInput = ({ label, icon, width = 250, size, placeholder }) => {
       </IconWrapper>
       <InputField
         type="text"
-        placeholder={placeholder}
         style={{
           "--fontSize": styles.fontSize + "px",
           "--borderThickness": styles.borderThickness + "px",
           "--paddingLeft": styles.paddingLeft + "px",
         }}
+        {...delegated}
       />
       <VisuallyHidden>{label}</VisuallyHidden>
     </IconInputWrapper>
