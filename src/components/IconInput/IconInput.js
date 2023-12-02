@@ -29,7 +29,6 @@ const InputField = styled.input`
   font-family: "Roboto", sans-serif;
   font-size: var(--fontSize);
   font-weight: 700;
-  color: ${COLORS.gray700};
 
   width: 100%;
   height: 100%;
@@ -39,13 +38,11 @@ const InputField = styled.input`
 
   padding-left: var(--paddingLeft);
 
+  color: inherit;
+
   &::placeholder {
     color: ${COLORS.gray500};
     font-weight: 400;
-  }
-
-  &:hover {
-    color: ${COLORS.black};
   }
 
   &:focus {
@@ -64,17 +61,17 @@ const IconWrapper = styled.div`
   width: var(--iconSize);
   height: 100%;
   pointer-events: none;
-  color: ${COLORS.gray700};
-
-  ${InputField}:hover & {
-    color: ${COLORS.black};
-  }
 `;
 
 const IconInputWrapper = styled.div`
   position: relative;
   width: var(--width);
   height: var(--height);
+  color: ${COLORS.gray700};
+
+  &:hover {
+    color: ${COLORS.black};
+  }
 `;
 
 const IconInput = ({ label, icon, width = 250, size, placeholder }) => {
